@@ -1,96 +1,95 @@
-//#define _CRT_SECURE_NO_WARNINGS 1
-//#include<iostream>
-//using namespace std;
-//
-//#include<assert.h>
-//
-//
-//void Print(int* a, int size)
-//{
-//	for (int i = 0; i < size; i++)
-//	{
-//		cout << a[i] << "  ";
-//	}
-//	cout << endl;
-//}
-//
-//
-//void Merge(int* a, int* tmp,int left,int mid, int right)
-//{
-//	int i = 0;
-//	int begin1 = left;
-//	int end1 = mid;
-//	int begin2 = mid + 1;
-//	int end2 = right;
-//	//×¢ÒâÇø¼äÊÇ£º[left,mid]  [mid+1,right]  Çø¼ä²»¿ÉÒÔÊÇ£º[left,mid-1] [mid,right]
-//	//Á½¸öÇø¼äºÏ²¢³ÉÒ»¸öÇø¼ä
-//	while (begin1 <= end1 && begin2 <= end2)
-//	{
-//		if (a[begin1] <= a[begin2])
-//		{
-//			tmp[i++] = a[begin1++];
-//		}
-//		else
-//		{
-//			tmp[i++] = a[begin2++];
-//		}
-//	}
-//
-//	//´¦ÀíºÏ²¢Ê±¿ÉÄÜ³öÏÖµÄÕâÖÖÇé¿ö£ºÒ»¸öÇø¼ä»¹Î´×ßÍê£¬¶øÁíÒ»¸öÇø¼äÒÑ×ßÍê
-//	while (begin1 <= end1)
-//	{
-//		tmp[i++] = a[begin1++];
-//		
-//	}
-//	while (begin2 <= end2)
-//	{
-//		tmp[i++] = a[begin2++];		
-//	}
-//	
-//	//½«ºÏ²¢ºÃµÄÓÐÐòÇø¼ä¿½±´»ØaÖÐ£¬×¢Òâ£ºtmpÃ¿´ÎÊÇ´Ó0¿ªÊ¼µÄ£¬½«Êý×étmp´ÓÇ°ÖÁºó¿½»Ø¸øÊý×éaÊÇ´Óleft¿ªÊ¼µÄ
-//	for (int j = 0; j < i; j++)
-//	{
-//		a[left+j] = tmp[j];
-//	}
-//}
-//
-//
-//void MergeSort(int* a,int* tmp, int left, int right)
-//{
-//	assert(a);
-//	//½«ÐòÁÐµÄÕû¸öÇø¼äÃ¿´ÎµÝ¹éÑ¹Õ»»®·Ö³ÉÁ½°ë£¬Ö±ÖÁÇø¼ä»®·Ö³ÉÖ»ÓÐÒ»¸öÔªËØÎªÖ¹¡£
-//	if (left < right)
-//	{
-//		int mid = left - (left - right) / 2;
-//		if (left <= mid)
-//		{
-//			MergeSort(a, tmp, left, mid);
-//		}
-//
-//		if (mid+1 <= right)
-//		{
-//			MergeSort(a, tmp, mid+1, right);
-//		}
-//		//´ËÊ±£¬ÐòÁÐÒÑ»®·ÖÎªÖ»ÓÐÒ»¸öÔªËØ£¬½«Ã¿Á½¸öÇø¼äºÏ²¢³ÉÎªÒ»¸öÓÐÐòÇø¼ä£¬³öÕ»·µ»ØÉÏÒ»²ã£¬¼ÌÐø
-//		Merge(a, tmp, left, mid, right);
-//	}
-//}
-//
-//
-//void TestMergeSort()
-//{
-//	int a[] = { 12,34,12222,4568, 26, 1, 16, 10, 2, 4, 4, 93, 7, 5, 2, 4 };
-//	int size = sizeof(a) / sizeof(a[0]);
-//	int* tmp = new int[size];
-//	MergeSort(a, tmp, 0, size - 1);
-//	Print(a, size);
-//	delete[] tmp;
-//}
-//
-//
-//int main()
-//{
-//	TestMergeSort();
-//	system("pause");
-//	return 0;
-//}
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<iostream>
+USING NAMESPACE STD;
+
+#include<assert.h>
+
+void Print(int* a, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << a[i] << "  ";
+	}
+	cout << endl;
+}
+
+
+void Merge(int* a, int* tmp,int left,int mid, int right)
+{
+	int i = 0;
+	int begin1 = left;
+	int end1 = mid;
+	int begin2 = mid + 1;
+	int end2 = right;
+	//æ³¨æ„åŒºé—´æ˜¯ï¼š[left,mid]  [mid+1,right]  åŒºé—´ä¸å¯ä»¥æ˜¯ï¼š[left,mid-1] [mid,right]
+	//ä¸¤ä¸ªåŒºé—´åˆå¹¶æˆä¸€ä¸ªåŒºé—´
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (a[begin1] <= a[begin2])
+	{
+		tmp[i++] = a[begin1++];
+		}
+		else
+		{
+			tmp[i++] = a[begin2++];
+		}
+	}
+
+	//å¤„ç†åˆå¹¶æ—¶å¯èƒ½å‡ºçŽ°çš„è¿™ç§æƒ…å†µï¼šä¸€ä¸ªåŒºé—´è¿˜æœªèµ°å®Œï¼Œè€Œå¦ä¸€ä¸ªåŒºé—´å·²èµ°å®Œ
+	while (begin1 <= end1)
+	{
+		tmp[i++] = a[begin1++];
+		
+	}
+	while (begin2 <= end2)
+	{
+		tmp[i++] = a[begin2++];		
+	}
+	
+	//å°†åˆå¹¶å¥½çš„æœ‰åºåŒºé—´æ‹·è´å›žaä¸­ï¼Œæ³¨æ„ï¼štmpæ¯æ¬¡æ˜¯ä»Ž0å¼€å§‹çš„ï¼Œå°†æ•°ç»„tmpä»Žå‰è‡³åŽæ‹·å›žç»™æ•°ç»„aæ˜¯ä»Žleftå¼€å§‹çš„
+	for (int j = 0; j < i; j++)
+	{
+	a[left+j] = tmp[j];
+	}
+ï½
+
+
+void MergeSort(int* a,int* tmp, int left, int right)
+{
+	assert(a);
+	//å°†åºåˆ—çš„æ•´ä¸ªåŒºé—´æ¯æ¬¡é€’å½’åŽ‹æ ˆåˆ’åˆ†æˆä¸¤åŠï¼Œç›´è‡³åŒºé—´åˆ’åˆ†æˆåªæœ‰ä¸€ä¸ªå…ƒç´ ä¸ºæ­¢ã€‚
+	if (left < right)
+	{
+		int mid = left - (left - right) / 2;
+		if (left <= mid)
+		{
+		MergeSort(a, tmp, left, mid);
+		}
+
+		if (mid+1 <= right)
+		{
+			MergeSort(a, tmp, mid+1, right);
+		}
+		//æ­¤æ—¶ï¼Œåºåˆ—å·²åˆ’åˆ†ä¸ºåªæœ‰ä¸€ä¸ªå…ƒç´ ï¼Œå°†æ¯ä¸¤ä¸ªåŒºé—´åˆå¹¶æˆä¸ºä¸€ä¸ªæœ‰åºåŒºé—´ï¼Œå‡ºæ ˆè¿”å›žä¸Šä¸€å±‚ï¼Œç»§ç»­
+		Merge(a, tmp, left, mid, right);
+	}
+}
+
+
+void TestMergeSort()
+{
+	int a[] = { 12,34,12222,4568, 26, 1, 16, 10, 2, 4, 4, 93, 7, 5, 2, 4 };
+	int size = sizeof(a) / sizeof(a[0]);
+	int* tmp = new int[size];
+	MergeSort(a, tmp, 0, size - 1);
+	Print(a, size);
+	delete[] tmp;
+}
+
+
+int main()
+{
+	TestMergeSort();
+	system("pause");
+	return 0;
+}
